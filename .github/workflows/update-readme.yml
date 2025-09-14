@@ -1,0 +1,27 @@
+name: Update README index
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch: {}
+  schedule:
+    - cron: "17 7 * * *"  # daily at 07:17 UTC
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Update README index
+        run: |
+          python scripts/update_readme.py
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(readme): update auto-generated index"
+          file_pattern: README.md
