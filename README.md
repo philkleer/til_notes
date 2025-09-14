@@ -5,6 +5,8 @@
 
 **Repo:** [https://github.com/philkleer/til-and-notes](https://github.com/philkleer/til-and-notes)
 
+**Personal page:** [https://github.com/philkleer](https://github.com/philkleer)
+
 ## Structure
 ```
 til/
@@ -24,14 +26,6 @@ scripts/
 - `notes/case-studies/` — longer write-ups using the template.
 - `projects/hello-cli/` — a tiny demo to expand.
 - Everything here is personal and generic—no proprietary details.
-
-## Quickstart
-```bash
-python3 scripts/new_til.py "short title here"
-git add . && git commit -m "docs(til): short title" && git push
-```
-
-This will create `til/{year}/{month}/YYYY-MM-DD-short-title.md` with a boilerplate header.
 
 ## License
 MIT (see `LICENSE`).

@@ -12,3 +12,6 @@ venv/
 # Editors
 .vscode/
 .idea/
+
+# files
+instructions.md
