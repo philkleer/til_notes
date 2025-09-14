@@ -9,7 +9,6 @@
 
 ## Entries
 
-```md
 <!-- START:INDEX -->
 ### 📚 Case studies
 - 2025-09-14 — [From ad‑hoc repo to versioned, CI‑driven R package: nicverso](notes/case-studies/2025-09-14-nicverso-ci-overhaul.md)
@@ -30,7 +29,6 @@
 
 _Last updated: 2025-09-14 22:59 UTC_
 <!-- END:INDEX -->
-```
 
 ## License
 MIT (see `LICENSE`).
