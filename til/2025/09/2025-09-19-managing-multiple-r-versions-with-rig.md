@@ -22,7 +22,7 @@ winget install Posit.rig
 
 **Linux**
 - Debian/Ubuntu (APT repo), RPM, or tarball. See the README’s “Installation” section for exact commands for your distro.
-```
+
 
 ## Core commands I used
 ```bash

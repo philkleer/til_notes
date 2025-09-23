@@ -8,7 +8,7 @@ tags: [r, package, gitlab-ci, release, refactoring]
 
 
 ## Context
-The `nicverso` package (*not public*) started as a plain repo that teammates cloned and deployed manually. There was no clear split between **contributors** (who change code) and **users** (who only install/use), and breaking changes could ship unnoticed.
+The `nicverso` package (*not public*) started as a plain repo that teammates cloned and deployed manually without any standardization of code within the package, formatting, lintering or versioning of the package. Furthermore, there was no clear split between **contributors** (who change code) and **users** (who only install/use), and breaking changes could ship unnoticed.
 
 ## Goals
 - Standardize the project layout and tooling for **consistency and quality**.
@@ -18,18 +18,17 @@ The `nicverso` package (*not public*) started as a plain repo that teammates clo
 ## What I changed
 ### 1. Standardization & docs
 - Adopted `devtools`, `roxygen2`, `testthat` (edition 3).
-- Added a full **README** and a **CONTRIBUTING.md** (Portuguese) with editor/CLI setup, Air + lintr usage, and commit/release conventions.
-- Codified style: **Air** (formatter) + **lintr** (static analysis).
+- Added a full **README.md** and a **CONTRIBUTING.md** with editor/CLI setup, `Air` + `lintr` usage, and commit/release conventions.
+- Codified style: **Air** (formatter) + **lintr** (static analysis), even as pre-commit check so that no dirty code lands in the repository
+- Added `renv` so that developers work in the same environment
 
 ### 2. Pre-commit & pre-push hooks
-- `.pre-commit-config.yaml` runs Air/lintr on staged files (**pre-commit**) and on diffs vs default branch (**pre-push**) to keep the main branch clean without slowing developers.
+- `.pre-commit-config.yaml` runs `Air`/`lintr` on staged files (**pre-commit**) and on diffs vs. default branch (**pre-push**) to keep the main branch clean without slowing developers.
 
 ### 3. CI/CD with GitLab
-- **Image**: `rocker/r2u:jammy` (fast apt + r2u binaries).
+- Added a release CI/CD so that versions get released and the package can be loaded from different versions once code changes largely but old versions are still used in functioning products
+- **Image**: `rocker/r-ver:4.5.1` to assure version in congruence with `renv`
 - **Stages**: `lint` → `check` → `coverage` → `build` → `release`.
-- **Caching**: keyed by `DESCRIPTION`/`NAMESPACE` so installs are fast, reusing `/usr/local/lib/R/site-library`/`$R_LIBS_USER`.
-
-- **Check**: `rcmdcheck --as-cran` with `_R_CHECK_FORCE_SUGGESTS_=false`.
 - **Coverage**: `covr::package_coverage()` prints a single `Total: NN.N%` line for CI parsing.
 - **Build**: `devtools::build()` tarball + `build_manual()`; keeps artifacts in `dist/`.
 - **Release**: tags `vX.Y.Z` via `release-cli` and publishes links to the exact build job artifacts.
@@ -37,7 +36,7 @@ The `nicverso` package (*not public*) started as a plain repo that teammates clo
 - **Safety**: a `workflow: rules` block prevents double pipelines on tags created by the API.
 
 ### 4. Users vs contributors
-- **Contributors** work via MR pipelines and follow style gates automatically.
+- **Contributors** work via MR pipelines and follow style gates automatically via pre-commit.
 - **Users** install **versioned** builds with `pak` (examples):
 
   ```r
@@ -49,14 +48,14 @@ The `nicverso` package (*not public*) started as a plain repo that teammates clo
   ```
 
 ## Impact
-- Predictable installs for users; older products can pin `vX.Y.Z`.
+- Predictable installs for users; older products can pin version `vX.Y.Z`.
 - Fewer regressions: code style + lint + check + coverage run in CI.
 - Clearer roles and faster onboarding due to documented workflows.
 - Reproducible builds and downloadable artifacts (tarball + manual PDF).
 
 ## Lessons learned
 - **Cache smartly**: key on files that change dependency graphs (e.g., `DESCRIPTION`), not the whole tree.
-- **Gate on diffs**: running Air/lintr only on changed files scales better and keeps feedback tight.
+- **Gate on diffs**: running `Air`/`lintr` only on changed files scales better and keeps feedback tight.
 - **Link releases to artifacts**: end users love a stable URL to the exact tarball/manual.
 - **Keep release triggers explicit**: a conventional commit message (e.g., `new version vX.Y.Z`) keeps pipelines predictable.
 
@@ -64,18 +63,5 @@ The `nicverso` package (*not public*) started as a plain repo that teammates clo
 - Add CRON job for revdep checks on key dependencies.
 - Track coverage trend over time; fail the build on large drops.
 
-## Appendix (sanitized snippets)
-**Stages**
-```yaml
-stages: [lint, check, coverage, build, release]
-```
-
-**Coverage job**
-```yaml
-coverage: '/^Total:\s+(\d+(?:\.\d+)?)%$/'
-```
-
-**Install for users**
-```r
-pak::pkg_install("gitlab:group/nicverso@v1.2.3")
-```
+## Public disclosure note
+This write-up is **code-free** and describes techniques, not proprietary logic or data. It is safe to publish publicly and to discuss at a high level in a portfolio.

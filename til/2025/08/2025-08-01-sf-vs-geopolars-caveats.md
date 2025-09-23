@@ -11,18 +11,19 @@ tags: [r, sf, geospatial, crs, s2]
 
 ## 1. CRS & units
 - Never compute area/distance/buffer in raw **EPSG:4326** (lon/lat). Transform first:
+
   ```r
-  x_proj <- sf::st_transform(x, 3857)  # example; pick a local equal-area/UTM CRS for your region
-  sf::st_area(x_proj)                  # returns units (e.g., m^2); convert with units::set_units()
+  x_proj <- sf::st_transform(x, 3857)
+  sf::st_area(x_proj)
   ```
 - Check assumptions quickly: `sf::st_is_longlat(x)` or `sf::st_crs(x)`; print the bbox.
 
-## 2. s2 vs GEOS in sf
-- `sf` uses **s2** for geographic CRS by default. Some operations (e.g., `st_intersection`, `st_buffer`) can differ from planar GEOS.
+## 2. `s2` vs `GEOS` in `sf`
+- `sf` uses **s2** for geographic `CRS` by default. Some operations (e.g., `st_intersection`, `st_buffer`) can differ from planar `GEOS`.
   ```r
-  sf::sf_use_s2()       # see current
-  sf::sf_use_s2(TRUE)   # enable (default)
-  sf::sf_use_s2(FALSE)  # force planar (after transforming to projected CRS)
+  sf::sf_use_s2()
+  sf::sf_use_s2(TRUE)
+  sf::sf_use_s2(FALSE)
   ```
 - Rule of thumb: **transform + planar** for buffers/areas; **s2** is great for long-distance great-circle logic.
 
@@ -34,12 +35,12 @@ tags: [r, sf, geospatial, crs, s2]
   ```
 - Coerce consistent types before joins/overlays: `st_cast(x, "MULTIPOLYGON")` etc.
 
-## 4. Performance with sf
-- Prefer **GeoParquet/Feather** over GeoJSON/CSV for speed.
+## 4. Performance with `sf`
+- Prefer **GeoParquet/Feather** over `GeoJSON`/`CSV` for speed.
 - Clip early with coarse **bbox** to shrink data:
   ```r
   bbox <- sf::st_as_sfc(sf::st_bbox(window_poly), crs = sf::st_crs(window_poly))
-  pts_small <- sf::st_filter(pts, bbox)  # fast prefilter
+  pts_small <- sf::st_filter(pts, bbox)
   ```
 
 ## 5. Axis order & coordinates
@@ -50,23 +51,23 @@ tags: [r, sf, geospatial, crs, s2]
 - If a dataset used `lat,lon` by mistake, your bbox will look flipped—always sanity-check `st_bbox(pts)`.
 
 ## 6. Buffers & distances
-- Choose a CRS whose **units align** with your intent. For a 500 m buffer, use a meter-based CRS (e.g., UTM); then:
+- Choose a `CRS` whose **units align** with your intent. For a 500 m buffer, use a meter-based `CRS` (e.g., `UTM`); then:
   ```r
-  x_m <- sf::st_transform(x, 31983)  # example CRS; pick one that suits your region
+  x_m <- sf::st_transform(x, 31983)
   ring <- sf::st_buffer(x_m, dist = 500)
   ```
 
 ## 7. Simplify for plotting
 - For web/plots, simplify lightly to speed rendering (don’t simplify data you’ll analyze):
   ```r
-  x_simpl <- lwgeom::st_simplify(x_proj, dTolerance = 50)  # meters if CRS in meters
+  x_simpl <- lwgeom::st_simplify(x_proj, dTolerance = 50)
   ```
 
 ## 8. Joining attributes safely
 - Spatial join then **select** only what you need; beware of duplicated rows after many-to-many joins:
   ```r
   joined <- sf::st_join(pts_small, polys, left = TRUE)
-  dplyr::count(joined$poly_id)  # check multiplicities
+  dplyr::count(joined$poly_id)
   ```
 
 **Good defaults to remember**

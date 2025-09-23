@@ -6,7 +6,7 @@ tags: [r, shiny, refactoring, modularization]
 
 # Modularizing a Large Shiny App (R)
 
-> Refactor case study — converting a monolithic Shiny application into a modular, maintainable codebase using Shiny modules and pure R components.
+> Refactor case study (work from prior employees) — converting a monolithic Shiny application into a modular, maintainable codebase using Shiny modules and pure R components.
 
 ## Context
 - Inherited a large Shiny app originally authored by a predecessor.
@@ -25,64 +25,28 @@ tags: [r, shiny, refactoring, modularization]
 4. **Thin UI composition** in `app_ui()`; wire modules in `app_server()`.
 5. **Consistency tooling**: `lintr`, `styler`, `renv` lockfile; pre-commit hooks for formatting/linting.
 
-### Minimal module pattern (generic)
-```r
-# src/modules/mod_widget.R
-mod_widget_ui <- function(id) {
-  ns <- NS(id)
-  tagList(
-    shiny::textInput(ns("name"), "Name"),
-    shiny::actionButton(ns("go"), "Go"),
-    shiny::tableOutput(ns("tbl"))
-  )
-}
-
-mod_widget_server <- function(id, compute_fn) {
-  moduleServer(id, function(input, output, session) {
-    shiny::observeEvent(input$go, {
-      vals <- compute_fn(input$name)  # pure function from src/R
-      output$tbl <- shiny::renderTable(vals)
-    })
-  })
-}
-
-# src/R/compute.R
-compute_values <- function(name) {
-  data.frame(greeting = paste0("Hello, ", name))
-}
-
-# app_server/app_ui (excerpt)
-ui <- fluidPage(mod_widget_ui("w1"))
-server <- function(input, output, session) {
-  mod_widget_server("w1", compute_values)
-}
-```
-
 ## File metrics (before → intermediate)
 
 ### Baseline (before)
 Monolithic layout with a few very large files.
 
-| dir           | n_files | min_lines | max_lines |      mean_lines | median_lines |
-|:--------------|--------:|----------:|----------:|----------------:|-------------:|
-| `src/`        |       4 |       503 |     10651 |          4685.2 |       3793.5 |
-| `src/modules` |       3 |        62 |       115 |            88.7 |         89.0 |
-| `src/www`     |       1 |       495 |       495 |           495.0 |        495.0 |
-| **Total**     |   **8** |         — |         — | **≈19,502 LOC** |            — |
+| dir  | n_files | n_funcs | min_LOC | max_LOC | mean_LOC | median_LOC |
+|------|--------:|--------:|--------:|--------:|---------:|-----------:|
+| src/ |       4 |      91 |     503 |   10651 |  4685.25 |     3793.5 |
 
-### Intermediate state (after modularization pass in progress)
+### After factorization/modularization
 More files, each much smaller and easier to reason about.
 
-| dir           | n_files | min_lines | max_lines |     mean_lines | median_lines |
-|:--------------|--------:|----------:|----------:|---------------:|-------------:|
-| `src/`        |       4 |       218 |       298 |          251.2 |        244.5 |
-| `src/modules` |       6 |       278 |       985 |          529.5 |        427.5 |
-| `src/R`       |       7 |       182 |      1615 |          754.4 |        612.5 |
-| **Total**     |  **17** |         — |         — | **≈9,463 LOC** |            — |
+| dir          | n_files | n_funcs | min_LOC |  max_LOC |   mean_LOC | median_LOC |
+|--------------|--------:|--------:|--------:|---------:|-----------:|-----------:|
+| src/         |       4 |       9 |     229 |      479 |        312 |        270 |
+| src/modules/ |       4 |      18 |     253 |     1142 |     604.75 |        512 |
+| src/R/       |       8 |     121 |     222 |     2884 |     933.38 |      690.5 |
+| **<TOTAL>**  |  **16** | **148** | **222** | **2884** | **695.88** |    **481** |
 
 **Impact so far**
-- **~51% reduction** in total lines of code (~19.5k → ~9.46k LOC) while maintaining behaviour.
-- **Max file size** shrank from **10,651** lines to **1,615** lines (easier navigation & reviews).
+- **~41% reduction** in total lines of code (~18.7k → ~11.13k LOC) while maintaining behaviour.
+- **Max file size** shrank from **10,651** lines to **2,884** lines (easier navigation & reviews).
 - Clear separation between **UI modules** (`src/modules`) and **pure logic** (`src/R`).
 
 > Note: LOC is a coarse proxy; the larger win is reduced coupling and clearer boundaries.
@@ -97,35 +61,12 @@ More files, each much smaller and easier to reason about.
 - Module naming: `mod_<feature>_{ui,server}`; IDs are namespaced via `NS(id)`.
 - Dependency injection: pass functions/services into modules; avoid `<<-`/globals.
 - Error handling: validate inputs early; surface user-friendly messages in UI.
-- Style & lint: `styler::style_dir()`, `lintr::lint_dir()` via pre-commit.
+- Style & lint: styling/formatting with `Air`, `lintr::lint_dir()` via pre-commit.
 - Project hygiene: `renv::init()` for reproducible dependencies.
 
 ## Next steps
 - Add **unit tests** for `src/R` and **shiny tests** for modules (e.g., `shiny::testServer`).
 - Introduce **type-like checks** with `checkmate` or `vctrs` for critical paths.
-- Split any remaining >800-line files.
-- Capture metrics in CI to prevent regressions (see script below).
-
-## Appendix: Recreate the metrics (local script)
-```r
-# scripts/loc_summary.R
-summarize_loc <- function(root = "src") {
-  files <- list.files(root, recursive = TRUE, full.names = TRUE)
-  # Focus on code-like files
-  keep <- grepl("\\\.(R|Rmd|js|css|html)$", files, ignore.case = TRUE)
-  files <- files[keep]
-  nlines <- sapply(files, function(p) length(readLines(p, warn = FALSE)))
-  df <- data.frame(file = files, dir = dirname(files), lines = as.integer(nlines))
-  agg <- aggregate(lines ~ dir, df, function(x) c(n_files = length(x), min = min(x), max = max(x), mean = mean(x), median = median(x)))
-  # Unpack the list columns
-  out <- do.call(data.frame, agg)
-  names(out) <- c("dir", "n_files", "min_lines", "max_lines", "mean_lines", "median_lines")
-  out[order(out$dir), ]
-}
-
-print(summarize_loc("src"))
-```
 
 ## Public disclosure note
 This write-up is **code-free** and describes techniques, not proprietary logic or data. It is safe to publish publicly and to discuss at a high level in a portfolio.
-

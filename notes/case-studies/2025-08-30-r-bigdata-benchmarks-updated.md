@@ -4,11 +4,11 @@ date: 2025-08-30
 tags: [r, dplyr, duckplyr, polars, postgres, duckdb, dbplyr, benchmarks, big-data]
 ---
 
-> Exploratory benchmarks comparing **data-frame backends** (dplyr/duckplyr/polars) and **query engines** (PostgreSQL/DuckDB). The goal is to document *trade‑offs* and a repeatable method—not crown a universal winner.
+> Exploratory benchmarks comparing **data-frame backends** (`dplyr`/`duckplyr`/`polars`) and **query engines** (`PostgreSQL`/`DuckDB`). The goal is to document *trade‑offs* and a repeatable method—not crown a universal winner.
 
 ## Setup (summarized)
-- **Machine:** MacBook (fill in model/RAM/CPU here)
-- **R:** 4.x; Packages: `dplyr`, `duckdb`, `duckplyr`, `DBI`, `RPostgres`, `polars`, `bench`, `covr`
+- **Machine:** MacBook (Air 2022/16GB RAM/M2)
+- **R:** 4.5.1; Packages: `dplyr`, `duckdb`, `duckplyr`, `DBI`, `RPostgres`, `polars`, `bench`, `covr`
 - **Data:** multiple regional subsets (e.g., *Sudeste*, *Sul*, *Nordeste*, etc.), up to ~millions of rows per region
 - **Note:** Largest region first in the plots; cold caches flushed between major runs
 
@@ -39,7 +39,7 @@ tags: [r, dplyr, duckplyr, polars, postgres, duckdb, dbplyr, benchmarks, big-dat
 - Data-frame pipelines composed with `dplyr` verbs; alternative backends via `duckplyr` and `polars` where present.
 - **Database-backed** runs via `DBI` + `RPostgres`, with queries expressed through `dbplyr::tbl()` -> `dplyr` verbs and `collect()` at the end.
 - For **DuckDB**, connections created with `duckdb::duckdb()`; CSV/Parquet ingestion via `read_csv_auto()` or equivalent.
-- Measurements captured for **wall time** (and optionally memory) across regional slices.
+- Measurements captured for **wall time** (and memory) across regional slices.
 
 ## What I measured
 - **Wall-clock execution time** for a representative transformation pipeline (filters → joins → group-by aggregations → optional sorting).
@@ -51,7 +51,6 @@ tags: [r, dplyr, duckplyr, polars, postgres, duckdb, dbplyr, benchmarks, big-dat
 To keep comparisons fair: largest region processed first; repeated runs summarized; caches treated consistently between runs.
 
 ## Figures
-If you already committed the charts, they live under `assets/benchmarks/` and are referenced here:
 
 <img src="../../assets/benchmarks/execution.jpeg" alt="Execution time (data frames)" width="640"/>
 
@@ -81,3 +80,6 @@ If you already committed the charts, they live under `assets/benchmarks/` and ar
   - PostgreSQL: create relevant indexes, `ANALYZE`, and inspect plans with `EXPLAIN` (`ANALYZE`, `BUFFERS`).
   - DuckDB: enable the profiler and review operator timings; store data in columnar formats when possible.
 - Compare **like-for-like**: identical filters/joins/aggregations, same materialization point, and similar cache conditions (cold vs warm) when timing.
+
+## Public disclosure note
+This write-up is **code-free** and describes techniques, not proprietary logic or data. It is safe to publish publicly and to discuss at a high level in a portfolio.
