@@ -34,15 +34,16 @@ _Last updated: 2025-09-24 12:31 UTC_
 
 ## Project Overview
 
-### Restructuring Portal OBIA
+<details>
 
-# DEBUG: MAKE THIS LIKE UNFOLDABLE (SO IT IS FOLDED AND THEN PEOPLE CAN EXPAND IT)
+<summary>### Restructuring Portal OBIA</summary>
 
-In this project, I worked on an initial version of former colleagues for the [portal Observatório de Inteligência Artifical](https://obia.nic.br) which monitors IA use and development through federal organizations. **Before** I started working on this project, the project was only managed by a single person and **was a monolithic Shiny application with just four files** and a lot of copied lines after each other (mean LOC: 4685.25, max LOC: 10,651). There was a process implemented in CI/CD to launch the application, however, quality tests like formatting/lintering code wasn't implemented and tests were not yet included. 
+In this project, I worked on an initial version started by former colleagues for the [Observatório de Inteligência Artificial portal](https://obia.nic.br), which monitors AI use and development across federal organizations. **Before** I joined, the project was managed by a single person and **consisted of a monolithic Shiny application with just four files** and many duplicated code blocks (mean LOC: 4,685.25; max LOC: 10,651). There was a CI/CD process in place to deploy the application, but quality checks such as formatting and linting were not implemented, and no tests had been included yet.  
 
-**My role and goal** was to **turn** this monolithic Shiny application **into a modular, maintainable codebase** using modules and pure R components. Furthermore, the aim was to write and document code in a way that several people can work on the project. Overall, my contribution led to a **~41% reduction** in total lines of code (~18.7k → ~11.13k LOC) while maintaining behaviour. The **Max file size** shrank from **10,651** lines to **2,884** lines (easier navigation & reviews) and the project is clearly separated between **UI modules** (`src/modules`) and **pure logic** (`src/R`) besides `ui.R`, `server.R`, `global.R` and `global-var.R`.
+**My role and goal** was to **refactor** this monolithic Shiny application **into a modular, maintainable codebase** using modules and pure R components. In addition, the objective was to ensure the code was written and documented in a way that enabled multiple developers to collaborate effectively. Overall, my contribution led to a **~41% reduction** in total lines of code (~18.7k → ~11.13k LOC) while maintaining functionality. The **largest file size** shrank from **10,651** lines to **2,884** lines (improving navigation and reviews), and the project is now clearly separated into **UI modules** (`src/modules`) and **pure logic** (`src/R`), alongside `ui.R`, `server.R`, `global.R`, and `global-var.R`.  
 
-Besides this, **I implemented** `renv` for an **environment management** for developers and also implemented the use of `renv` within the CI/CD. Since in the future more than a single person works on this project, **I implemented formatting (`Air`) and lintering (`lintr`)** into the CI/CD and also into a pre-commit configuration, so that only code gets to the repository that shares the common styling and lintering. To further develop the state of the project, **I wrote unit tests** for `src/R` and **shiny tests for modules** in `src/modules`.
+Additionally, **I implemented** `renv` for **environment management** to support developers, and integrated it into the CI/CD pipeline. Since the project would eventually involve multiple contributors, **I integrated formatting (`Air`) and linting (`lintr`)** into both CI/CD and a pre-commit configuration, ensuring that only code with consistent style and linting passes is committed. To further improve maintainability and quality, **I wrote unit tests** for `src/R` and **Shiny tests for modules** in `src/modules`.  
+
 
 #### Stats after transitioning code
 
@@ -55,26 +56,28 @@ Besides this, **I implemented** `renv` for an **environment management** for dev
 
 #### See more about the project: [Case study](notes/case-studies/2025-08-14-modularizing-large-shiny-app.md), 
 
-### Levelling up the team's own R package
+</details>
 
-# DEBUG: MAKE THIS LIKE UNFOLDABLE (SO IT IS FOLDED AND THEN PEOPLE CAN EXPAND IT)
+<details>
+<summary>### Levelling up the team's own R package</summary>
 
-When I started working in a new company, I was quite excited that the team already used a common R package for the team to gather common functionality at a shared point. When I arrived the package included a clear package structure, but lacked on standardization (different code formatting in files, different styling formats), a separated logic of the package for users on one side and for contributors/maintainers on the other side as well as a CI/CD practice for versioning and releasing the package internally.
+When I started at a new company, I was excited to see that the team was already using a shared R package to centralize common functionality. The package had a clear structure, but it lacked **standardization** (inconsistent formatting and styles across files), a clear separation of logic for **users vs. contributors/maintainers**, and a **CI/CD process** for versioning and internal releases.  
 
-Hence, my first steps in this new package were three main goals:
+**My first goals** with the package were to:  
+1. Standardize the project layout and tooling for **consistency and quality**.  
+2. Introduce **CI/CD** to automate checks, builds, and releases.  
+3. Establish a **versioned installation path for users**, ensuring older products remain stable.  
+4. Add **unit tests** with `testthat`.  
 
-1. Standardize the project layout and tooling for **consistency and quality**.
-2. Introduce **CI/CD** to automate checks, builds, and releases.
-3. Establish a **versioned install path for users** so older products remain stable.
-4. Include unit tests with `testthat`
+To achieve **standardization**, I split the package logic between **users** (with an updated and clear **README.md**) and **contributors** (with a new **CONTRIBUTING.md**). Contributors received setup instructions for editor/CLI, guidance on `Air` + `lintr`, and conventions for commits and releases. To ensure consistent development across environments, I implemented **`renv` environment management** (compatible with `rig` for multiple R versions [see Case study](notes/case-studies/2025-09-19-debugging-multiple-R-versions-with-rig-and-renv.md)). Additionally, I enforced **formatting** with `Air`, **linting** with `lintr`, and **clean environment checks** via pre-commit hooks. This ensured that all contributions followed a unified style and reproducible environment setup.  
 
-Regarding **standardization** of the project, I **split the logic** of the use for **users** (updated and clear **README.md**) and **contributors** (new instructions in **CONTRIBUTING.md**) with editor/CLI setup, instructions for the use of `Air` + `lintr`, and commit/release conventions. To **make the development consistent** across different contributors, **I implemented environment settings** with `renv` which can also be used together with `rig` on different versions of  R [see Case study](notes/case-studies/2025-09-19-debugging-multiple-R-versions-with-rig-and-renv.md). Furthermore, **I added formatting** with `Air` and **linting** with `lintr` as well as **checking a clean status of the environment** in the pre-commit check. Hence, code in the package follows now a clear pattern. 
+For **safe usage and stability**, I established a **versioning strategy**. This was crucial because many older products depended on the package, and updates could otherwise break functionality. I built a **CI/CD pipeline** that automatically formats and lints code, checks test coverage, builds the package (including a manual landing in `dist/`), and finally **releases a tagged version** (e.g., `v0.13.1`). Team members could then install specific versions directly using `pak`, ensuring both stability and reproducibility.  
 
-To secure a safe use of the package when changes in the code happens, versioning is mandatory. Especially regarding the use in older products where a recent update of functionality might lead to crashes. Therefore, **I implemented a CI/CD** to **release new versions** of the package that can then be installed by team users with the package `pak` and specific versioning (i.e., `v0.13.1`). The **pipeline assures congruence with `renv`**, **formats** and **lint codes**, **checks coverage of tests** implemented, **builds** the package (inclusive manual landing in `dist/`) and **finally releases** the new version with its version tag. 
-
-The **impact of this project** was large on the team: It made it possible that team members who are just users can install the packages in a native way with `pak` and its specific version. With this, there are also clearer roles and faster onboarding due to documented workflows. It assures reproducible builds and downloadable artifacts.
+The **impact** of this work was significant: team members could now install the package natively with version control, onboarding became faster thanks to clear documentation, and the pipeline guaranteed **reproducible builds** with downloadable artifacts. This established clear roles for **users vs. contributors** and made the overall workflow more reliable and scalable.  
 
 #### See more in the [case study](notes/case-studies/2025-09-14-nicverso-ci-overhaul.md)
+
+</details>
 
 ## License
 MIT (see `LICENSE`).
