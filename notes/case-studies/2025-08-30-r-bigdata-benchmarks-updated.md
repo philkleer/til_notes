@@ -80,6 +80,3 @@ To keep comparisons fair: largest region processed first; repeated runs summariz
   - PostgreSQL: create relevant indexes, `ANALYZE`, and inspect plans with `EXPLAIN` (`ANALYZE`, `BUFFERS`).
   - DuckDB: enable the profiler and review operator timings; store data in columnar formats when possible.
 - Compare **like-for-like**: identical filters/joins/aggregations, same materialization point, and similar cache conditions (cold vs warm) when timing.
-
-## Public disclosure note
-This write-up is **code-free** and describes techniques, not proprietary logic or data. It is safe to publish publicly and to discuss at a high level in a portfolio.

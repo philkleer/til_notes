@@ -24,6 +24,7 @@ The `nicverso` package (*not public*) started as a plain repo that teammates clo
 
 ### 2. Pre-commit & pre-push hooks
 - `.pre-commit-config.yaml` runs `Air`/`lintr` on staged files (**pre-commit**) and on diffs vs. default branch (**pre-push**) to keep the main branch clean without slowing developers.
+- it also runs a check of the virtual environment with `renv::status()` to be sure that the environment is in-tact
 
 ### 3. CI/CD with GitLab
 - Added a release CI/CD so that versions get released and the package can be loaded from different versions once code changes largely but old versions are still used in functioning products
@@ -62,6 +63,3 @@ The `nicverso` package (*not public*) started as a plain repo that teammates clo
 ## Next steps
 - Add CRON job for revdep checks on key dependencies.
 - Track coverage trend over time; fail the build on large drops.
-
-## Public disclosure note
-This write-up is **code-free** and describes techniques, not proprietary logic or data. It is safe to publish publicly and to discuss at a high level in a portfolio.

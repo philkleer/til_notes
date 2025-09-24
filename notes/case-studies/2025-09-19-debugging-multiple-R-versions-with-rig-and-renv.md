@@ -111,6 +111,3 @@ rig default 4.5.1
 export RENV_PROFILE=r-4.5
 R -q -e 'renv::restore(); renv::snapshot()'
 ```
-
-## Public disclosure note
-This write-up is **code-free** and describes techniques, not proprietary logic or data. It is safe to publish publicly and to discuss at a high level in a portfolio.

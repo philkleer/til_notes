@@ -17,13 +17,13 @@ tags: [r, shiny, refactoring, modularization]
 > - *Refactoring* = change structure without changing behaviour.
 > - *Modularization* = split responsibilities into isolated, reusable components (Shiny modules + pure R functions).
 
-## Approach (high level)
+## Approach
 1. **Define module boundaries** by feature/concern (e.g., authentication, filters, charts, tables, export) and create `mod_*` pairs:
    - `mod_feature_ui(id)` and `mod_feature_server(id, deps...)`.
 2. **Extract business logic** from server code into pure functions under `src/R/` (functional, testable, no `input/output/session`).
 3. **Standardize naming & IDs** using `NS()`; avoid global state; pass dependencies explicitly.
 4. **Thin UI composition** in `app_ui()`; wire modules in `app_server()`.
-5. **Consistency tooling**: `lintr`, `styler`, `renv` lockfile; pre-commit hooks for formatting/linting.
+5. **Consistency tooling**: `lintr`, `Air`, `renv` lockfile; pre-commit hooks for formatting/linting.
 
 ## File metrics (before → intermediate)
 
@@ -61,12 +61,9 @@ More files, each much smaller and easier to reason about.
 - Module naming: `mod_<feature>_{ui,server}`; IDs are namespaced via `NS(id)`.
 - Dependency injection: pass functions/services into modules; avoid `<<-`/globals.
 - Error handling: validate inputs early; surface user-friendly messages in UI.
-- Style & lint: styling/formatting with `Air`, `lintr::lint_dir()` via pre-commit.
+- Style & lint: styling/formatting with `Air`, `lintr::lint_dir()` and environment check via pre-commit.
 - Project hygiene: `renv::init()` for reproducible dependencies.
 
 ## Next steps
 - Add **unit tests** for `src/R` and **shiny tests** for modules (e.g., `shiny::testServer`).
 - Introduce **type-like checks** with `checkmate` or `vctrs` for critical paths.
-
-## Public disclosure note
-This write-up is **code-free** and describes techniques, not proprietary logic or data. It is safe to publish publicly and to discuss at a high level in a portfolio.
