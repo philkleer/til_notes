@@ -31,7 +31,7 @@
 _Last updated: 2025-09-24 13:21 UTC_
 <!-- END:INDEX -->
 
-## Project Overview
+## 🌁 Project Overview
 
 <details>
 
