@@ -1,7 +1,6 @@
 # TIL & Project Overview
 
 > Today I Learned — small, self-contained learning notes and tiny demos.  
-> Public and **work-safe** (no company IP).
 
 **Personal page:** [https://github.com/philkleer](https://github.com/philkleer)
 
@@ -36,7 +35,7 @@ _Last updated: 2025-09-24 13:20 UTC_
 
 <details>
 
-<summary>### Restructuring Portal OBIA</summary>
+<summary><h3>Restructuring Portal OBIA</h3></summary>
 
 In this project, I worked on an initial version started by former colleagues for the [Observatório de Inteligência Artificial portal](https://obia.nic.br), which monitors AI use and development across federal organizations. **Before** I joined, the project was managed by a single person and **consisted of a monolithic Shiny application with just four files** and many duplicated code blocks (mean LOC: 4,685.25; max LOC: 10,651). There was a CI/CD process in place to deploy the application, but quality checks such as formatting and linting were not implemented, and no tests had been included yet.  
 
@@ -59,7 +58,7 @@ Additionally, **I implemented** `renv` for **environment management** to support
 </details>
 
 <details>
-<summary>### Levelling up the team's own R package</summary>
+<summary><h3>Levelling up the team's own R package</h3></summary>
 
 When I started at a new company, I was excited to see that the team was already using a shared R package to centralize common functionality. The package had a clear structure, but it lacked **standardization** (inconsistent formatting and styles across files), a clear separation of logic for **users vs. contributors/maintainers**, and a **CI/CD process** for versioning and internal releases.  
 
