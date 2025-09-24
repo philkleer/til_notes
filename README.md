@@ -29,7 +29,7 @@
 - 2025-08-14 — [Shiny modularization — key lessons](til/2025/08/2025-08-14-modularization.md)
 - 2025-08-01 — [Spatial in R: sf — beginner caveats](til/2025/08/2025-08-01-sf-vs-geopolars-caveats.md)
 
-_Last updated: 2025-09-23 19:45 UTC_
+_Last updated: 2025-09-24 07:29 UTC_
 <!-- END:INDEX -->
 
 ## License
