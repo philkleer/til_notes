@@ -4,7 +4,7 @@
 
 **Personal page:** [https://github.com/philkleer](https://github.com/philkleer)
 
-**Repo:** [https://github.com/philkleer/til-and-notes](https://github.com/philkleer/til-and-notes)
+**Repo:** [https://github.com/philkleer/til_notes](https://github.com/philkleer/til_notes)
 
 ## Entries
 
