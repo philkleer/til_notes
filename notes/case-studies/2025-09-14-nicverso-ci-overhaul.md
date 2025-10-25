@@ -63,3 +63,4 @@ The `nicverso` package (*not public*) started as a plain repo that teammates clo
 ## Next steps
 - Add CRON job for revdep checks on key dependencies.
 - Track coverage trend over time; fail the build on large drops.
+- Creating own Docker image for faster CI/CD [see TIL](../../til/2025/10/2025-10-01-faster-ci-r-docker.md)
