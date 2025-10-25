@@ -23,6 +23,10 @@ I restructured the rendering logic so that:
 - Consistent, informative exported images.
 - Improved UX — users focus on data, not repeated labels.
 
+![In the application](../../../assets/application_image.png)
+
+![As download](../../../assets/download_image.jpg)
+
 ## Lessons Learned
 - Always think about **context** vs **presentation**.
 - Dynamic labeling for exports keeps both app and outputs elegant.
