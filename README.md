@@ -16,6 +16,10 @@ m# TIL & Project Overview
 - 2025-08-14 — [Modularizing a Large Shiny App (R)](notes/case-studies/2025-08-14-modularizing-large-shiny-app.md)
 
 ### 📝 TILs (latest 12)
+- 2025-10-25 — [TIL: Reorganizing a database and structuring migrations for cleaner data flow](til/2025/10/2025-10-25-reorganizaing-data-base.md)
+- 2025-10-17 — [TIL: Avoiding duplicated information in Shiny graphics exports](til/2025/10/2025-10-17-no-duplicated-info-in-shiny-app.md)
+- 2025-10-10 — [TIL: Using `goose` for lightweight database migrations](til/2025/10/2025-10-10-using-goose-migrations.md)
+- 2025-10-01 — [TIL: Speeding up R CI pipelines with a custom Docker image](til/2025/10/2025-10-01-faster-ci-r-docker.md)
 - 2025-09-30 — [Python packaging with Poetry — quick start & pitfalls (for R package devs)](til/2025/09/2025-09-30-poetry-quickstart-pitfalls.md)
 - 2025-09-19 — [TIL: Managing multiple R versions with `rig`](til/2025/09/2025-09-19-managing-multiple-r-versions-with-rig.md)
 - 2025-09-14 — [Interactive graphics in R: ggiraph vs plotly](til/2025/08/2025-08-24-ggiraph-vs-plotly.md)
@@ -24,11 +28,8 @@ m# TIL & Project Overview
 - 2025-09-14 — [Release automation with release-cli](til/2025/09/2025-09-10-release-automation-with-release-cli.md)
 - 2025-09-02 — [GitLab CI for R packages: fast caches with pak](til/2025/09/2025-09-02-gitlab-ci-for-r-packages-fast-caches-with-pak.md)
 - 2025-09-01 — [Users vs contributors: smooth install with pak](til/2025/09/2025-09-01-users-vs-contributors-smooth-install-with-pak.md)
-- 2025-08-30 — [Leaflet in R and Python — beginner caveats](til/2025/08/2025-08-30-leaflet-r-vs-python-caveats.md)
-- 2025-08-14 — [Shiny modularization — key lessons](til/2025/08/2025-08-14-modularization.md)
-- 2025-08-01 — [Spatial in R: sf — beginner caveats](til/2025/08/2025-08-01-sf-vs-geopolars-caveats.md)
 
-_Last updated: 2025-10-25 07:27 UTC_
+_Last updated: 2025-10-25 17:47 UTC_
 <!-- END:INDEX -->
 
 ## 🌁 Project Overview
