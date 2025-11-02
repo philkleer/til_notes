@@ -29,7 +29,7 @@ m# TIL & Project Overview
 - 2025-09-02 — [GitLab CI for R packages: fast caches with pak](til/2025/09/2025-09-02-gitlab-ci-for-r-packages-fast-caches-with-pak.md)
 - 2025-09-01 — [Users vs contributors: smooth install with pak](til/2025/09/2025-09-01-users-vs-contributors-smooth-install-with-pak.md)
 
-_Last updated: 2025-11-01 07:27 UTC_
+_Last updated: 2025-11-02 07:27 UTC_
 <!-- END:INDEX -->
 
 ## 🌁 Project Overview
