@@ -10,12 +10,16 @@ m# TIL & Project Overview
 
 <!-- START:INDEX -->
 ### 📚 Case studies
+- 2025-11-20 — [Case Study: Benchmarking Shiny app performance across environments with `shinyloadtest`](notes/case-studies/2025-11-20-shinyloadtest-performance-comparison.md)
 - 2025-09-19 — [Case Study: Debugging across multiple R versions with `rig` + `renv`](notes/case-studies/2025-09-19-debugging-multiple-R-versions-with-rig-and-renv.md)
 - 2025-09-14 — [From ad‑hoc repo to versioned, CI‑driven R package: nicverso](notes/case-studies/2025-09-14-nicverso-ci-overhaul.md)
 - 2025-08-30 — [R big data benchmarks: dplyr/duckplyr/polars & Postgres/DuckDB](notes/case-studies/2025-08-30-r-bigdata-benchmarks-updated.md)
 - 2025-08-14 — [Modularizing a Large Shiny App (R)](notes/case-studies/2025-08-14-modularizing-large-shiny-app.md)
 
 ### 📝 TILs (latest 12)
+- 2025-11-19 — [TIL: Embedding Shiny elements inside Quarto Dashboards](til/2025/11/2025-11-19-quarto-dashboards-with-shiny.md)
+- 2025-11-10 — [Today I Learned: Consistent naming across stack layers improves maintainability](til/2025/11/2025-11-10-til-consistent-naming.md)
+- 2025-11-04 — [TIL: Speeding up Shiny apps with smarter reactive design](til/2025/11/2025-11-04-shiny-performance-tips.md)
 - 2025-10-25 — [TIL: Reorganizing a database and structuring migrations for cleaner data flow](til/2025/10/2025-10-25-reorganizaing-data-base.md)
 - 2025-10-17 — [TIL: Avoiding duplicated information in Shiny graphics exports](til/2025/10/2025-10-17-no-duplicated-info-in-shiny-app.md)
 - 2025-10-10 — [TIL: Using `goose` for lightweight database migrations](til/2025/10/2025-10-10-using-goose-migrations.md)
@@ -25,11 +29,8 @@ m# TIL & Project Overview
 - 2025-09-14 — [Interactive graphics in R: ggiraph vs plotly](til/2025/08/2025-08-24-ggiraph-vs-plotly.md)
 - 2025-09-14 — [Dual gates: Air + lintr on staged files and diffs](til/2025/09/2025-09-14-dual-gates-air-+-lintr-on-staged-files-and-diffs.md)
 - 2025-09-14 — [R CMD check badge from CI (pure R)](til/2025/09/2025-09-07-r-cmd-check-badge-from-ci-(pure-r).md)
-- 2025-09-14 — [Release automation with release-cli](til/2025/09/2025-09-10-release-automation-with-release-cli.md)
-- 2025-09-02 — [GitLab CI for R packages: fast caches with pak](til/2025/09/2025-09-02-gitlab-ci-for-r-packages-fast-caches-with-pak.md)
-- 2025-09-01 — [Users vs contributors: smooth install with pak](til/2025/09/2025-09-01-users-vs-contributors-smooth-install-with-pak.md)
 
-_Last updated: 2025-11-13 07:30 UTC_
+_Last updated: 2025-11-13 20:37 UTC_
 <!-- END:INDEX -->
 
 ## 🌁 Project Overview
