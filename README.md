@@ -18,7 +18,7 @@ m# TIL & Project Overview
 
 ### 📝 TILs (latest 12)
 - 2025-11-19 — [TIL: Embedding Shiny elements inside Quarto Dashboards](til/2025/11/2025-11-19-quarto-dashboards-with-shiny.md)
-- 2025-11-10 — [Today I Learned: Consistent naming across stack layers improves maintainability](til/2025/11/2025-11-10-til-consistent-naming.md)
+- 2025-11-10 — [Today I Learned: Consistent naming across stack layers improves maintainability](til/2025/11/2025-11-10-consistent-naming.md)
 - 2025-11-04 — [TIL: Speeding up Shiny apps with smarter reactive design](til/2025/11/2025-11-04-shiny-performance-tips.md)
 - 2025-10-25 — [TIL: Reorganizing a database and structuring migrations for cleaner data flow](til/2025/10/2025-10-25-reorganizaing-data-base.md)
 - 2025-10-17 — [TIL: Avoiding duplicated information in Shiny graphics exports](til/2025/10/2025-10-17-no-duplicated-info-in-shiny-app.md)
@@ -30,7 +30,7 @@ m# TIL & Project Overview
 - 2025-09-14 — [Dual gates: Air + lintr on staged files and diffs](til/2025/09/2025-09-14-dual-gates-air-+-lintr-on-staged-files-and-diffs.md)
 - 2025-09-14 — [R CMD check badge from CI (pure R)](til/2025/09/2025-09-07-r-cmd-check-badge-from-ci-(pure-r).md)
 
-_Last updated: 2025-11-19 07:30 UTC_
+_Last updated: 2025-11-19 12:56 UTC_
 <!-- END:INDEX -->
 
 ## 🌁 Project Overview
