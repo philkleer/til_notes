@@ -30,7 +30,7 @@ m# TIL & Project Overview
 - 2025-09-14 — [Dual gates: Air + lintr on staged files and diffs](til/2025/09/2025-09-14-dual-gates-air-+-lintr-on-staged-files-and-diffs.md)
 - 2025-09-14 — [R CMD check badge from CI (pure R)](til/2025/09/2025-09-07-r-cmd-check-badge-from-ci-(pure-r).md)
 
-_Last updated: 2025-11-28 07:31 UTC_
+_Last updated: 2025-11-29 07:29 UTC_
 <!-- END:INDEX -->
 
 ## 🌁 Project Overview
