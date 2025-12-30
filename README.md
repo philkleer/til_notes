@@ -18,6 +18,7 @@ m# TIL & Project Overview
 - 2025-08-14 — [Modularizing a Large Shiny App (R)](notes/case-studies/2025-08-14-modularizing-large-shiny-app.md)
 
 ### 📝 TILs (latest 12)
+- 2025-12-30 — [🧠 TIL: Getting Docker Image Tags Right in a Company Harbor Registry](til/2025/12/2025-12-30_tagging_docker_production_images.md)
 - 2025-12-12 — [Configuring Rate Limiting and IP Restriction in Kong Ingress](til/2025/12/2025-12-12-kong-plugins.md)
 - 2025-12-04 — [🧠 Building Machine Learning workflows in R with {tidymodels}](til/2025/12/2025-12-04_tidymodels_workflow.md)
 - 2025-11-19 — [TIL: Embedding Shiny elements inside Quarto Dashboards](til/2025/11/2025-11-19-quarto-dashboards-with-shiny.md)
@@ -29,9 +30,8 @@ m# TIL & Project Overview
 - 2025-10-01 — [TIL: Speeding up R CI pipelines with a custom Docker image](til/2025/10/2025-10-01-faster-ci-r-docker.md)
 - 2025-09-30 — [Python packaging with Poetry — quick start & pitfalls (for R package devs)](til/2025/09/2025-09-30-poetry-quickstart-pitfalls.md)
 - 2025-09-19 — [TIL: Managing multiple R versions with `rig`](til/2025/09/2025-09-19-managing-multiple-r-versions-with-rig.md)
-- 2025-09-14 — [Interactive graphics in R: ggiraph vs plotly](til/2025/08/2025-08-24-ggiraph-vs-plotly.md)
 
-_Last updated: 2025-12-30 18:44 UTC_
+_Last updated: 2025-12-30 18:52 UTC_
 <!-- END:INDEX -->
 
 ## 🌁 Project Overview
