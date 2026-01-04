@@ -111,7 +111,7 @@ def render_index(
     cases: List[Entry], tils: List[Entry], til_limit: int = 12
 ) -> str:
     lines = []
-    lines.append("### 📚 Case studies")
+    lines.append("## Case studies")
     if cases:
         for e in cases:
             lines.append(f"- {e.date.date()} — [{e.title}]({e.relpath})")
@@ -119,7 +119,7 @@ def render_index(
         lines.append("- _(none yet)_")
 
     lines.append("")
-    lines.append(f"### 📝 TILs (latest {til_limit})")
+    lines.append("## TIL: Latest Lessons")
     for e in tils[:til_limit]:
         lines.append(f"- {e.date.date()} — [{e.title}]({e.relpath})")
 
