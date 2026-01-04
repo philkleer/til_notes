@@ -72,7 +72,7 @@ In this project, In this project, I built and deployed a production-grade R Shin
 </details>
 
 <details>
-<summary><h3>⬇️ Network Technology Analysis & Presentation</i>></h3></summary>
+<summary><h3>⬇️ Network Technology Analysis & Presentation</i></h3></summary>
 
 I analyzed network technologies using statistical and exploratory methods and communicated the results through a high-impact presentation designed for mixed audiences. By tailoring the narrative to both technical and policy stakeholders, I helped connect empirical findings with policy-relevant discussions at the IX Forum 2025.
 
