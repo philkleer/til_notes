@@ -38,7 +38,7 @@ _Last updated: 2026-01-04 07:32 UTC_
 
 <details>
 
-<summary><h3>⬇️ Restructuring Portal OBIA</h3></summary>
+<summary><h3>⬇️ Shiny application <i>Observatório de Inteligência Artificial (OBIA)</i></h3></summary>
 
 In this project, I worked on an initial version started by former colleagues for the [Observatório de Inteligência Artificial portal](https://obia.nic.br), which monitors AI use and development across federal organizations. **Before** I joined, the project was managed by a single person and **consisted of a monolithic Shiny application with just four files** and many duplicated code blocks (mean LOC: 4,685.25; max LOC: 10,651). There was a CI/CD process in place to deploy the application, but quality checks such as formatting and linting were not implemented, and no tests had been included yet.  
 
@@ -56,8 +56,25 @@ Additionally, **I implemented** `renv` for **environment management** to support
 | src/R/       |       8 |     121 |     222 |     2884 |     933.38 |      690.5 |
 | **<TOTAL>**  |  **16** | **148** | **222** | **2884** | **695.88** |    **481** |
 
-#### See more about the project: [Case study](notes/case-studies/2025-08-14-modularizing-large-shiny-app.md), 
+#### See more about the project: [Case study](notes/case-studies/2025-08-14-modularizing-large-shiny-app.md),  [Shinyloadtest](notes/case-studies/2025-11-20-shinyloadtest-performance-comparison.md), 
 
+</details>
+
+
+<details>
+
+<summary><h3>⬇️ Shiny application <i>Autodiagnóstico do Sistema de Administração dos Recursos de Tecnologia da Informação</i>></h3></summary>
+
+In this project, In this project, I built and deployed a production-grade R Shiny application to evaluate IT governance among national entities. I was responsible for the entire development lifecycle, including data integration from multiple sources, the creation of a consistent visual design system, and the setup of automated CI/CD pipelines. The result is a stable, maintainable, and publicly accessible analytics platform.
+
+[#### Link to project](https://obia.nic.br/s/indicadores-mgi)
+</details>
+
+<summary><h3>⬇️ Network Technology Analysis & Presentation</i>></h3></summary>
+
+I analyzed network technologies using statistical and exploratory methods and communicated the results through a high-impact presentation designed for mixed audiences. By tailoring the narrative to both technical and policy stakeholders, I helped connect empirical findings with policy-relevant discussions at the IX Forum 2025.
+
+[#### Link to presentation](http://philkleer.quarto.pub/ix_forum_25/)
 </details>
 
 <details>
@@ -78,6 +95,24 @@ For **safe usage and stability**, I established a **versioning strategy**. This 
 The **impact** of this work was significant: team members could now install the package natively with version control, onboarding became faster thanks to clear documentation, and the pipeline guaranteed **reproducible builds** with downloadable artifacts. This established clear roles for **users vs. contributors** and made the overall workflow more reliable and scalable.  
 
 #### See more in the [case study](notes/case-studies/2025-09-14-nicverso-ci-overhaul.md)
+
+</details>
+
+
+<details>
+<summary><h3>⬇️ ML Ops Pipeline Project</h3></summary>
+
+In this project, I designed and implemented an end-to-end MLOps workflow using MLflow and DVC to manage model training, versioning, and monitoring. The setup simulated a production-like environment, emphasizing reproducibility, traceability, and systematic model lifecycle management.
+
+Deep Leaf is an end-to-end MLOps project in which I built a production-like deep learning system for plant disease classification using transfer learning (VGG16). The project was designed to demonstrate how machine learning models can be developed, deployed, and maintained in a realistic, scalable environment beyond isolated experimentation.
+
+I implemented a complete model lifecycle, including data and model versioning with DVC, experiment tracking and model management with MLflow, and automated retraining workflows orchestrated via Airflow. To simulate real-world conditions, the pipeline supports incremental data ingestion, systematic model comparison, and automated promotion of improved models to production.
+
+The system is exposed through a FastAPI service that enables both inference on uploaded images and the triggering of new training runs, reflecting common ML-enabled application patterns. All components are containerized using Docker and coordinated with Docker Compose, while a CI/CD pipeline based on GitHub Actions enforces code quality, automated testing, and reproducible builds.
+
+Overall, this project showcases my ability to design, implement, and operate a full MLOps stack, bridging deep learning, backend services, workflow orchestration, and DevOps practices in a production-oriented setting.
+
+[#### Link to project](https://dagshub.com/philkleer/deepleaf_mlops/src/main)
 
 </details>
 
