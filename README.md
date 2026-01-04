@@ -63,13 +63,15 @@ Additionally, **I implemented** `renv` for **environment management** to support
 
 <details>
 
-<summary><h3>⬇️ Shiny application <i>Autodiagnóstico do Sistema de Administração dos Recursos de Tecnologia da Informação</i>></h3></summary>
+<summary><h3>⬇️ Shiny application <i>Autodiagnóstico do Sistema de Administração dos Recursos de Tecnologia da Informação</i></h3></summary>
 
 In this project, In this project, I built and deployed a production-grade R Shiny application to evaluate IT governance among national entities. I was responsible for the entire development lifecycle, including data integration from multiple sources, the creation of a consistent visual design system, and the setup of automated CI/CD pipelines. The result is a stable, maintainable, and publicly accessible analytics platform.
 
 [#### Link to project](https://obia.nic.br/s/indicadores-mgi)
+
 </details>
 
+<details>
 <summary><h3>⬇️ Network Technology Analysis & Presentation</i>></h3></summary>
 
 I analyzed network technologies using statistical and exploratory methods and communicated the results through a high-impact presentation designed for mixed audiences. By tailoring the narrative to both technical and policy stakeholders, I helped connect empirical findings with policy-relevant discussions at the IX Forum 2025.
