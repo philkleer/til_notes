@@ -1,15 +1,236 @@
-m# TIL & Project Overview
+# Data Science Notes & Project Portfolio
 
-> Today I Learned — small, self-contained learning notes and tiny demos.  
+This repository contains curated **Today I Learned (TIL) insights**, **case studies**, and detailed project overviews from my work as a **Data Scientist**, focusing on reproducible workflows, applied analytics, data engineering, and production-grade systems.
 
-**Personal page:** [https://github.com/philkleer](https://github.com/philkleer)
+Visit the individual case studies below to explore:
+- how I refactor and optimize data applications (e.g., Shiny),
+- how I build full ML pipelines,
+- and how I benchmark performance across tools and environments.
 
-**Repo:** [https://github.com/philkleer/til_notes](https://github.com/philkleer/til_notes)
+Each entry includes technical explanations, code snippets, results, and lessons learned.
 
-## Entries
+👤 **Profile:** https://github.com/philkleer  
+📄 **LinkedIn:** https://linkedin.com/in/philkleer  
+
+## Table of Contents
+1. [⭐ Featured Projects](#featured-projects)
+2. [📂 Detailed Projects](#detailed-projects)
+3. [📚 Case Studies](#case-studies)
+4. [🧠 Learning Notes (TIL)](#til-latest-lessons)
+5. [🙋🏻‍♂️ About Me](#about-me)
+
+
+## Featured Projects
+
+These projects represent my most relevant work as an applied Data Scientist, with a focus on **production systems**, **reproducible analytics**, and **decision support**.
+
+1. **Modularizing a Large Shiny Application (OBIA)**  
+Refactoring and hardening a national-scale analytics application, reducing code size by ~41% and introducing CI/CD, testing, and reproducibility.
+
+2. **Leveling Up an Internal R Package for Team-Scale Use**  
+Productionizing an internal analytics package with versioned releases, CI/CD pipelines, and reproducible environments.
+
+3. **Shiny Application – IT Governance (MGI)**  
+End-to-end development and deployment of a public-facing Shiny application to assess IT governance across national entities.
+
+4. **Network Technology Analysis & Visualization**  
+Statistical analysis and visual storytelling to support technical and policy-oriented decision-making.
+
+5. **End-to-End MLOps Pipeline**  
+Implementation of a production-like ML lifecycle with experiment tracking and data/model versioning.
+
+## Detailed Projects
+
+<details>
+
+<summary><h3>⬇️ Modularizing a Large Shiny Application <i>Observatório de Inteligência Artificial (OBIA)</i></h3></summary>
+
+*Refactoring and hardening a production-grade Shiny application for long-term maintainability, collaboration, and reliability.*
+
+### Overview
+This project documents the refactoring of a large, production Shiny application used in a national analytics context. 
+
+The original codebase had grown organically into a monolithic structure that was difficult to maintain, test, and extend.
+
+The goal was to transform the application into a **modular, testable, and reproducible system**, suitable for multi-developer collaboration and continuous deployment.
+
+### Key Contributions
+- Refactored a monolithic Shiny application into a **fully modular architecture**
+- Reduced total lines of code by **~41%** while improving readability and extensibility
+- Introduced **automated testing**, linting, and formatting standards
+- Implemented **reproducible dependency management** using `renv`
+- Set up **CI/CD pipelines** to ensure code quality and deployment safety
+- Improved application performance and load behavior
+
+### Tech Stack
+- **Languages:** R  
+- **Frameworks:** Shiny, plotly
+- **Testing:** testthat  
+- **Reproducibility:** renv  
+- **CI/CD:** GitLab CI  
+- **Deployment:** Docker, Kubernetes  
+
+### Results & Impact
+- Significantly improved maintainability and onboarding for new contributors
+- Enabled reliable multi-developer workflows
+- Increased confidence in production releases through automated checks
+- Established a reusable architectural pattern for future Shiny applications
+
+### Notes
+This refactor prioritizes **long-term sustainability over short-term feature additions** and serves as a reference architecture for future analytical applications. 
+
+🔎 **Detailed walkthrough:** 
+- [Case study](notes/case-studies/2025-08-14-modularizing-large-shiny-app.md)
+
+🔗 **Live application:**  
+https://obia.nic.br/s/indicadores
+</details>
+
+<details>
+<summary><h3>⬇️ Levelling up the team's own R package</h3></summary>
+
+*Standardizing, hardening, and productionizing an internal R package to support reproducible analytics, CI/CD, and multi-developer collaboration.*
+
+### Overview
+When joining a new team, I inherited an internal R package used to centralize shared analytical functionality across multiple products. While the package was already in use, it lacked **standardization**, **clear role separation between users and contributors**, and a **reliable CI/CD and release process**.
+
+The goal of this project was to transform the package into a **stable, versioned, and reproducible internal dependency**, suitable for long-term maintenance and safe use across production systems.
+
+### Key Contributions
+- Standardized package structure, formatting, and development conventions across the entire codebase  
+- Introduced **CI/CD pipelines** to automate checks, builds, and versioned internal releases  
+- Established a **clear separation between user-facing and contributor-facing logic and documentation**  
+- Implemented **reproducible dependency management** using `renv`, compatible with multiple R versions  
+- Added **unit testing** with `testthat` and enforced code quality via formatting, linting, and pre-commit hooks  
+- Designed and implemented a **safe versioning strategy** to prevent breaking changes in dependent products  
+
+### Tech Stack
+- **Language:** R  
+- **Package tooling:** testthat, roxygen2  
+- **Reproducibility:** renv, rig  
+- **Code quality:** Air (formatting), lintr (linting), pre-commit  
+- **CI/CD:** GitLab CI  
+- **Distribution:** pak, internal release artifacts  
+
+### Results & Impact
+- Enabled **versioned installation** of the package, allowing teams to pin stable releases and avoid regressions  
+- Reduced onboarding time through clear **README** and **CONTRIBUTING** documentation  
+- Established **reproducible builds** with downloadable artifacts produced by the CI pipeline  
+- Improved development consistency across contributors and environments  
+- Made internal analytics workflows **more reliable, scalable, and maintainable**
+
+This work turned the package from a loosely maintained codebase into a **production-ready internal dependency**, supporting both rapid development and long-term stability.
+
+### Notes
+- Older products could safely continue using pinned package versions while new releases evolved independently  
+- The separation of *users vs. contributors* clarified responsibilities and reduced friction in collaboration  
+- The CI/CD setup now serves as a **reference template** for other internal R packages  
+
+🔎 **Detailed walkthrough:**  
+[CI/CD overhaul case study](notes/case-studies/2025-09-14-nicverso-ci-overhaul.md)
+
+</details>
+
+<details>
+
+<summary><h3>⬇️ Shiny application <i>Autodiagnóstico do Sistema de Administração dos Recursos de Tecnologia da Informação</i></h3></summary>
+
+*Designing and deploying a production-grade analytical application to evaluate IT governance across national entities.*
+
+### Overview
+This project involved the development and deployment of a **public-facing, production-grade R Shiny application** designed to assess and analyze IT governance practices among national public-sector entities.
+
+I was responsible for the **entire application lifecycle**, from data integration and analytical logic to visual design, automation, and deployment. The goal was to deliver a **stable, maintainable, and transparent analytics platform** that supports evidence-based evaluation and comparison.
+
+### Key Contributions
+- Developed a **production-grade Shiny application** covering the full analytical workflow
+- Integrated and processed data from **multiple heterogeneous sources**
+- Designed a **consistent visual design system** to ensure clarity, comparability, and usability
+- Implemented **CI/CD pipelines** to automate testing, builds, and deployments
+- Ensured application **stability, maintainability, and reproducibility** across environments
+- Delivered a **publicly accessible analytics portal** for ongoing use and updates
+
+### Tech Stack
+- **Language:** R  
+- **Frameworks:** Shiny, ggplot2, ggiraph
+- **Data:** Relational databases, structured datasets  
+- **CI/CD:** GitLab CI  
+- **Deployment:** Docker, Kubernetes  
+
+### Results & Impact
+- Delivered a **robust and maintainable analytics platform** for assessing IT governance at national scale  
+- Enabled consistent and transparent comparison across entities  
+- Reduced operational overhead through automated deployment and quality checks  
+- Established a reusable blueprint for future public-sector analytical applications  
+
+### Notes
+🔗 **Live application:**  
+https://obia.nic.br/s/indicadores-mgi
+
+</details>
+
+<details>
+<summary><h3>⬇️ Network Technology Analysis & Visualization</i></h3></summary>
+
+*Statistical and exploratory analysis of network technologies with a focus on communication and decision support.*
+
+### Overview
+This project analyzes network technology data to identify patterns, quality indicators, and trends relevant for technical and policy-oriented audiences.
+
+### Key Contributions
+- Conducted exploratory and statistical analyses
+- Applied regression-based methods where appropriate
+- Translated analytical results into clear visual narratives
+- Prepared presentation-ready outputs for non-technical stakeholders
+
+### Tech Stack
+- R
+- tidyverse, ggplot2, brms
+- revealJS 
+- Quarto
+
+### Results & Impact
+- Supported evidence-based discussions on network technologies
+- Improved accessibility of complex analytical results through visualization
+
+### Notes
+🔎 **Presentation at IX Forum 2025 (10min):**  
+[Link to presentation](http://philkleer.quarto.pub/ix_forum_25/)
+</details>
+
+<details>
+<summary><h3>⬇️ End-to-End MLOps Pipeline</h3></summary>
+
+*Implementing a production-like machine learning lifecycle with model tracking and versioning.*
+
+### Overview
+This project explores the design of an end-to-end MLOps workflow, covering model training, experiment tracking, data and model versioning, and reproducibility.
+
+### Key Contributions
+- Implemented experiment tracking with MLflow
+- Versioned data and models using DVC
+- Simulated a production-style model lifecycle
+- Documented pipeline structure and design choices
+
+### Tech Stack
+- Python
+- MLflow
+- DVC
+- Git
+
+### Results & Impact
+- Demonstrates practical understanding of MLOps concepts
+- Provides a reference implementation for small-to-medium ML projects
+
+### Notes
+- [Link to project](https://dagshub.com/philkleer/deepleaf_mlops/src/main)
+
+</details>
+
+---
 
 <!-- START:INDEX -->
-### 📚 Case studies
+## Case studies
 - 2025-12-17 — [How I build data-driven presentations with Quarto + revealjs (a real-world example)](notes/case-studies/2025-12-17-nota_estilo_apresentacoes_quarto_revealjs.md)
 - 2025-11-20 — [Case Study: Benchmarking Shiny app performance across environments with `shinyloadtest`](notes/case-studies/2025-11-20-shinyloadtest-performance-comparison.md)
 - 2025-09-19 — [Case Study: Debugging across multiple R versions with `rig` + `renv`](notes/case-studies/2025-09-19-debugging-multiple-R-versions-with-rig-and-renv.md)
@@ -17,7 +238,7 @@ m# TIL & Project Overview
 - 2025-08-30 — [R big data benchmarks: dplyr/duckplyr/polars & Postgres/DuckDB](notes/case-studies/2025-08-30-r-bigdata-benchmarks-updated.md)
 - 2025-08-14 — [Modularizing a Large Shiny App (R)](notes/case-studies/2025-08-14-modularizing-large-shiny-app.md)
 
-### 📝 TILs (latest 12)
+## TIL: Latest Lessons
 - 2025-12-30 — [🧠 TIL: Getting Docker Image Tags Right in a Company Harbor Registry](til/2025/12/2025-12-30_tagging_docker_production_images.md)
 - 2025-12-12 — [Configuring Rate Limiting and IP Restriction in Kong Ingress](til/2025/12/2025-12-12-kong-plugins.md)
 - 2025-12-04 — [🧠 Building Machine Learning workflows in R with {tidymodels}](til/2025/12/2025-12-04_tidymodels_workflow.md)
@@ -34,89 +255,16 @@ m# TIL & Project Overview
 _Last updated: 2026-01-04 13:05 UTC_
 <!-- END:INDEX -->
 
-## 🌁 Project Overview
+## About me
 
-<details>
+I’m a Ph.D.-trained Data Scientist experienced in:
+- applied analytics  
+- statistical modeling  
+- production workflows
 
-<summary><h3>⬇️ Shiny application <i>Observatório de Inteligência Artificial (OBIA)</i></h3></summary>
+[📄 **CV**](./assets/cv_kleer_en.pdf)
 
-In this project, I worked on an initial version started by former colleagues for the [Observatório de Inteligência Artificial portal](https://obia.nic.br), which monitors AI use and development across federal organizations. **Before** I joined, the project was managed by a single person and **consisted of a monolithic Shiny application with just four files** and many duplicated code blocks (mean LOC: 4,685.25; max LOC: 10,651). There was a CI/CD process in place to deploy the application, but quality checks such as formatting and linting were not implemented, and no tests had been included yet.  
-
-**My role and goal** was to **refactor** this monolithic Shiny application **into a modular, maintainable codebase** using modules and pure R components. In addition, the objective was to ensure the code was written and documented in a way that enabled multiple developers to collaborate effectively. Overall, my contribution led to a **~41% reduction** in total lines of code (~18.7k → ~11.13k LOC) **while including more functionality** like unit tests. The **largest file size** shrank from **10,651** lines to **2,884** lines (improving navigation and reviews), and the project is now clearly separated into **UI modules** (`src/modules`) and **pure logic** (`src/R`), alongside `ui.R`, `server.R`, `global.R`, and `global-var.R`.  
-
-Additionally, **I implemented** `renv` for **environment management** to support developers, and integrated it into the CI/CD pipeline. Since the project would eventually involve multiple contributors, **I integrated formatting (`Air`) and linting (`lintr`)** into both CI/CD and a pre-commit configuration, ensuring that only code with consistent style and linting passes is committed. To further improve maintainability and quality, **I wrote unit tests** for `src/R` and **Shiny tests for modules** in `src/modules`.  
-
-
-#### Stats after transitioning code
-
-| dir          | n_files | n_funcs | min_LOC |  max_LOC |   mean_LOC | median_LOC |
-|--------------|--------:|--------:|--------:|---------:|-----------:|-----------:|
-| src/         |       4 |       9 |     229 |      479 |        312 |        270 |
-| src/modules/ |       4 |      18 |     253 |     1142 |     604.75 |        512 |
-| src/R/       |       8 |     121 |     222 |     2884 |     933.38 |      690.5 |
-| **<TOTAL>**  |  **16** | **148** | **222** | **2884** | **695.88** |    **481** |
-
-#### See more about the project: [Case study](notes/case-studies/2025-08-14-modularizing-large-shiny-app.md),  [Shinyloadtest](notes/case-studies/2025-11-20-shinyloadtest-performance-comparison.md), 
-
-</details>
-
-
-<details>
-
-<summary><h3>⬇️ Shiny application <i>Autodiagnóstico do Sistema de Administração dos Recursos de Tecnologia da Informação</i></h3></summary>
-
-In this project, In this project, I built and deployed a production-grade R Shiny application to evaluate IT governance among national entities. I was responsible for the entire development lifecycle, including data integration from multiple sources, the creation of a consistent visual design system, and the setup of automated CI/CD pipelines. The result is a stable, maintainable, and publicly accessible analytics platform.
-
-[#### Link to project](https://obia.nic.br/s/indicadores-mgi)
-
-</details>
-
-<details>
-<summary><h3>⬇️ Network Technology Analysis & Presentation</i></h3></summary>
-
-I analyzed network technologies using statistical and exploratory methods and communicated the results through a high-impact presentation designed for mixed audiences. By tailoring the narrative to both technical and policy stakeholders, I helped connect empirical findings with policy-relevant discussions at the IX Forum 2025.
-
-[#### Link to presentation](http://philkleer.quarto.pub/ix_forum_25/)
-</details>
-
-<details>
-<summary><h3>⬇️ Levelling up the team's own R package</h3></summary>
-
-When I started at a new company, I was excited to see that the team was already using a shared R package to centralize common functionality. The package had a clear structure, but it lacked **standardization** (inconsistent formatting and styles across files), a clear separation of logic for **users vs. contributors/maintainers**, and a **CI/CD process** for versioning and internal releases.  
-
-**My first goals** with the package were to:  
-1. Standardize the project layout and tooling for **consistency and quality**.  
-2. Introduce **CI/CD** to automate checks, builds, and releases.  
-3. Establish a **versioned installation path for users**, ensuring older products remain stable.  
-4. Add **unit tests** with `testthat`.  
-
-To achieve **standardization**, I split the package logic between **users** (with an updated and clear **README.md**) and **contributors** (with a new **CONTRIBUTING.md**). Contributors received setup instructions for editor/CLI, guidance on `Air` + `lintr`, and conventions for commits and releases. To ensure consistent development across environments, I implemented **`renv` environment management** (compatible with `rig` for multiple R versions [see Case study](notes/case-studies/2025-09-19-debugging-multiple-R-versions-with-rig-and-renv.md)). Additionally, I enforced **formatting** with `Air`, **linting** with `lintr`, and **clean environment checks** via pre-commit hooks. This ensured that all contributions followed a unified style and reproducible environment setup.  
-
-For **safe usage and stability**, I established a **versioning strategy**. This was crucial because many older products depended on the package, and updates could otherwise break functionality. I built a **CI/CD pipeline** that automatically formats and lints code, checks test coverage, builds the package (including a manual landing in `dist/`), and finally **releases a tagged version** (e.g., `v0.13.1`). Team members could then install specific versions directly using `pak`, ensuring both stability and reproducibility.  
-
-The **impact** of this work was significant: team members could now install the package natively with version control, onboarding became faster thanks to clear documentation, and the pipeline guaranteed **reproducible builds** with downloadable artifacts. This established clear roles for **users vs. contributors** and made the overall workflow more reliable and scalable.  
-
-#### See more in the [case study](notes/case-studies/2025-09-14-nicverso-ci-overhaul.md)
-
-</details>
-
-
-<details>
-<summary><h3>⬇️ ML Ops Pipeline Project</h3></summary>
-
-In this project, I designed and implemented an end-to-end MLOps workflow using MLflow and DVC to manage model training, versioning, and monitoring. The setup simulated a production-like environment, emphasizing reproducibility, traceability, and systematic model lifecycle management.
-
-Deep Leaf is an end-to-end MLOps project in which I built a production-like deep learning system for plant disease classification using transfer learning (VGG16). The project was designed to demonstrate how machine learning models can be developed, deployed, and maintained in a realistic, scalable environment beyond isolated experimentation.
-
-I implemented a complete model lifecycle, including data and model versioning with DVC, experiment tracking and model management with MLflow, and automated retraining workflows orchestrated via Airflow. To simulate real-world conditions, the pipeline supports incremental data ingestion, systematic model comparison, and automated promotion of improved models to production.
-
-The system is exposed through a FastAPI service that enables both inference on uploaded images and the triggering of new training runs, reflecting common ML-enabled application patterns. All components are containerized using Docker and coordinated with Docker Compose, while a CI/CD pipeline based on GitHub Actions enforces code quality, automated testing, and reproducible builds.
-
-Overall, this project showcases my ability to design, implement, and operate a full MLOps stack, bridging deep learning, backend services, workflow orchestration, and DevOps practices in a production-oriented setting.
-
-[#### Link to project](https://dagshub.com/philkleer/deepleaf_mlops/src/main)
-
-</details>
+**LinkedIn:** https://linkedin.com/in/philkleer  
 
 ## License
 MIT (see `LICENSE`).
