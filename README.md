@@ -257,12 +257,15 @@ _Last updated: 2026-01-04 13:53 UTC_
 
 ## About me
 
-I’m a Ph.D.-trained Data Scientist experienced in:
-- applied analytics  
-- statistical modeling  
-- production workflows
+Ph.D.-trained Data Scientist with 8+ years of experience in quantitative analysis, statistical modeling, and applied data science. I specialize in building reproducible analytical workflows and production-grade data applications that support data-driven decision-making.
+
+My work combines advanced statistical and Bayesian modeling, machine learning, and software engineering practices, with hands-on experience in R, Python, SQL, CI/CD, and containerized deployments. I focus on translating complex data into actionable insights through robust analysis, interactive dashboards, and clear analytical narratives.
+
+Currently, I work as a Data Scientist at CEPTRO / NIC.br, where I develop and maintain analytical systems used to understand and monitor internet usage and network quality in Brazil. I collaborate in international and interdisciplinary teams and bring strong experience working across cultural and institutional contexts.
 
 [📄 **CV**](./assets/cv_kleer_en.pdf)
+
+**Github Profile:** https://github.com/philkleer  
 
 **LinkedIn:** https://linkedin.com/in/philkleer  
 
