@@ -31,7 +31,7 @@ m# TIL & Project Overview
 - 2025-09-30 — [Python packaging with Poetry — quick start & pitfalls (for R package devs)](til/2025/09/2025-09-30-poetry-quickstart-pitfalls.md)
 - 2025-09-19 — [TIL: Managing multiple R versions with `rig`](til/2025/09/2025-09-19-managing-multiple-r-versions-with-rig.md)
 
-_Last updated: 2026-01-03 07:31 UTC_
+_Last updated: 2026-01-04 07:32 UTC_
 <!-- END:INDEX -->
 
 ## 🌁 Project Overview
