@@ -231,6 +231,7 @@ This project explores the design of an end-to-end MLOps workflow, covering model
 
 <!-- START:INDEX -->
 ## Case studies
+- 2026-01-05 — [Case Study: School Detection from Satellite Imagery](notes/case-studies/2026-01-05-school_detection_from_satellite_imagery.md)
 - 2025-12-17 — [How I build data-driven presentations with Quarto + revealjs (a real-world example)](notes/case-studies/2025-12-17-nota_estilo_apresentacoes_quarto_revealjs.md)
 - 2025-11-20 — [Case Study: Benchmarking Shiny app performance across environments with `shinyloadtest`](notes/case-studies/2025-11-20-shinyloadtest-performance-comparison.md)
 - 2025-09-19 — [Case Study: Debugging across multiple R versions with `rig` + `renv`](notes/case-studies/2025-09-19-debugging-multiple-R-versions-with-rig-and-renv.md)
@@ -239,6 +240,10 @@ This project explores the design of an end-to-end MLOps workflow, covering model
 - 2025-08-14 — [Modularizing a Large Shiny App (R)](notes/case-studies/2025-08-14-modularizing-large-shiny-app.md)
 
 ## TIL: Latest Lessons
+- 2026-01-09 — [TIL: Learning Window Functions in PostgreSQL (with Practical Examples)](til/2026/01/2026-01-09_postgresql_window_functions.md)
+- 2026-01-05 — [TIL: Point labels are often better suited for *site detection* than for segmentation](til/2026/01/2026-01-05-point_labels_site_detection.md)
+- 2026-01-05 — [TIL: Geographic train/test splits are essential for honest geospatial ML evaluation](til/2026/01/2026-01-05_geo_train_test_split.md)
+- 2026-01-05 — [TIL: OpenStreetMap is powerful weak supervision—but it teaches what is *mapped*, not what *exists*](til/2026/01/2026-01-05-osm_weak_supervision.md)
 - 2025-12-30 — [🧠 TIL: Getting Docker Image Tags Right in a Company Harbor Registry](til/2025/12/2025-12-30_tagging_docker_production_images.md)
 - 2025-12-12 — [Configuring Rate Limiting and IP Restriction in Kong Ingress](til/2025/12/2025-12-12-kong-plugins.md)
 - 2025-12-04 — [🧠 Building Machine Learning workflows in R with {tidymodels}](til/2025/12/2025-12-04_tidymodels_workflow.md)
@@ -247,12 +252,8 @@ This project explores the design of an end-to-end MLOps workflow, covering model
 - 2025-11-04 — [TIL: Speeding up Shiny apps with smarter reactive design](til/2025/11/2025-11-04-shiny-performance-tips.md)
 - 2025-10-25 — [TIL: Reorganizing a database and structuring migrations for cleaner data flow](til/2025/10/2025-10-25-reorganizaing-data-base.md)
 - 2025-10-17 — [TIL: Avoiding duplicated information in Shiny graphics exports](til/2025/10/2025-10-17-no-duplicated-info-in-shiny-app.md)
-- 2025-10-10 — [TIL: Using `goose` for lightweight database migrations](til/2025/10/2025-10-10-using-goose-migrations.md)
-- 2025-10-01 — [TIL: Speeding up R CI pipelines with a custom Docker image](til/2025/10/2025-10-01-faster-ci-r-docker.md)
-- 2025-09-30 — [Python packaging with Poetry — quick start & pitfalls (for R package devs)](til/2025/09/2025-09-30-poetry-quickstart-pitfalls.md)
-- 2025-09-19 — [TIL: Managing multiple R versions with `rig`](til/2025/09/2025-09-19-managing-multiple-r-versions-with-rig.md)
 
-_Last updated: 2026-01-06 07:38 UTC_
+_Last updated: 2026-01-06 17:16 UTC_
 <!-- END:INDEX -->
 
 ## About me
