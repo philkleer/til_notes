@@ -253,7 +253,7 @@ This project explores the design of an end-to-end MLOps workflow, covering model
 - 2025-10-25 — [TIL: Reorganizing a database and structuring migrations for cleaner data flow](til/2025/10/2025-10-25-reorganizaing-data-base.md)
 - 2025-10-17 — [TIL: Avoiding duplicated information in Shiny graphics exports](til/2025/10/2025-10-17-no-duplicated-info-in-shiny-app.md)
 
-_Last updated: 2026-01-06 17:16 UTC_
+_Last updated: 2026-01-07 07:38 UTC_
 <!-- END:INDEX -->
 
 ## About me
