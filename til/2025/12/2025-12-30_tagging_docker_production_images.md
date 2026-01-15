@@ -1,15 +1,15 @@
 # 🧠 TIL: Getting Docker Image Tags Right in a Company Harbor Registry
 _Date: 2025-12-30_
 
-Today I learned (the hard way) how **clear Docker image tagging rules** make a big difference when working with a company Harbor registry and CI/CD pipelines. 
+Today I learned (the hard way) how **clear Docker image tagging rules** make a big difference when working with a company Harbor registry and CI/CD pipelines for application products.
 
-This note documents the **decisions, rationale, and pitfalls** I encountered while cleaning up image tags for *development* vs *production* builds.
+This note documents the **decisions, rationale, and pitfalls** I encountered while cleaning up image tags for *development* vs *production* builds of applications.
 
 ## 🎯 The Core Problem
 
-Over time, our image tagging strategy became confusing:
+Over time, our image tagging strategy became cumbersome:
 
-- Tags like **`latest`** and **`current`** were ambiguous.
+- Using at the same time tags like **`latest`** and **`current`** were ambiguous.
 - Development images were versioned, even though they change frequently.
 - It wasn’t always obvious which image was **safe for production**.
 - CI pipelines sometimes rebuilt the same image twice.
@@ -36,6 +36,7 @@ image:dev-a1b2c3d
 **Why this works well**
 - No need to update the `VERSION` file during development.
 - `dev` always points to the *latest development build*.
+- Clear that the application in this image is only for development purposes.
 - `dev-<commit>` uniquely identifies a specific build for debugging or rollback.
 
 ### 2) Merges into `main` → *production images*
@@ -53,6 +54,8 @@ For merge requests into `main`:
 **Meaning**
 - `prod` = *the image currently used in production*, always points to the *latest production build*
 - version tags = immutable historical releases for debugging or rollback.
+
+In this case, the use of `latest` is also common (especially for base images), however, building applications and having in mind that not all colleagues are experienced with image development, clearer tags were chosen. 
 
 ## 🔁 Simplifying the Build Tags
 
@@ -82,14 +85,15 @@ make DOCKER_BUILD_TAG=prod docker-push-release
 
 One key insight: **names encode assumptions**.
 
-- `latest` → ambiguous (latest *what*?)
-- `current` → unclear lifecycle
-- `prod` / `dev` → explicit and intentional
+Tags like `latest` / `current` refer to time, not to state like `prod` / `dev`. They communicate what the newest build is and, therefore, have a simple mental model which is useful for base images, SDKs, experimentation, or
+local development.
 
-Using `prod` / `dev` makes it immediately obvious which image:
-- is deployed,
-- should be pulled by default in production/development,
-- and represents a stable release (`prod`).
+On the other hand, `prod`/`dev` communicate the state, where the image is currently deployed. This has clear operational meaning, aligns with CI/CD and deployment concepts. However, it is slightly less convenient for ad-hoc *just pull the newest thing*. The tags `prod`/`dev` encode intent and operational state, they match how deployments actually work, and they reduce accidental rollouts.
+
+Both approaches should be combined with immutable tags:
+- ⚖️ They encode different semantics
+- 🏆 `dev` / `prod` is superior for deployable application images
+- 🧪 `latest` is good for local dev and base images
 
 ## 🧠 Key Takeaways
 
